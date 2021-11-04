@@ -1,8 +1,7 @@
 import React, { useState, useReducer } from 'react';
 import ReactDOM from 'react-dom';
 
-const App = () => {
-  // const [count, setCount] = useState(0)
+function useCounter() {
   const [state, dispatch] = useReducer((state, action) => {
     switch (action.type) {
       case 'INCREMENT': {
@@ -18,6 +17,13 @@ const App = () => {
   }, {
     count: 0
   })
+
+  return [state, dispatch]
+}
+
+const App = () => {
+  // const [count, setCount] = useState(0)
+  const [state, dispatch] = useCounter()
 
   let { count } = state
 
